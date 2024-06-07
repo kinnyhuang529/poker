@@ -4,6 +4,7 @@ import (
 	"errors"
 )
 
+// Evaluator Evaluate the card type, card strength and best hand
 func Evaluator(cards []Card) (cardType int32, cardStrength int32, bestHand []Card, err error) {
 	switch len(cards) {
 	case 5:

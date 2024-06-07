@@ -27,6 +27,8 @@ func init() {
 		primes[r] = primeValue[i]
 	}
 }
+
+// NewCard Generate a card
 func NewCard(card string) Card {
 	//xxxAKQJT 98765432 CHDSrrrr xxpppppp
 	prime := primes[card[1]]
@@ -36,22 +38,27 @@ func NewCard(card string) Card {
 	return Card(bit | suit | rank | prime)
 }
 
+// Prime Get the prime of the card
 func (c Card) Prime() int32 {
 	return int32(c) & 0x3F
 }
 
+// Rank Get the rank of the card
 func (c Card) Rank() int32 {
 	return (int32(c) >> 8) & 0xF
 }
 
+// Suit Get the suit of the card
 func (c Card) Suit() int32 {
 	return (int32(c) >> 12) & 0xF
 }
 
+// BitRank Get the bitRank of the card
 func (c Card) BitRank() int32 {
 	return (int32(c) >> 16) & 0x1FFF
 }
 
+// String Print out string
 func (c Card) String() string {
 	return string(suitStr[c.Suit()]) + string(rankStr[c.Rank()])
 }
